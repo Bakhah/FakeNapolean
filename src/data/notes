@@ -1,0 +1,19 @@
+//followFrequency script
+
+let json = followFrequency
+let res = "{"
+Object.keys(json).map((key) => {
+  let total = 0
+  res += "\""+key+"\": {\n"
+  let subTree = json[key]
+  Object.keys(subTree).map((subKey) => {
+    total += subTree[subKey]
+  })
+  console.log(total)
+  Object.keys(subTree).map((subKey) => {
+    res += "\""+subKey+"\": "+ (subTree[subKey] / total * 100).toFixed(5) + ",\n"
+  })
+  res += "},"
+})
+res += "}"
+return res
